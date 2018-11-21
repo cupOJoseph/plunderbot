@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/ProjectOpenSea/plunderbot/issues"
   },
-  "homepage": "https://github.com/ProjectOpenSea/plunderbot#readme"
+  "homepage": "https://github.com/ProjectOpenSea/plunderbot#readme",
+  "bin":{
+    "plunderbot": "bin/plunder.js"
+  }
 }
