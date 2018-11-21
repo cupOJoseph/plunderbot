@@ -1,6 +1,6 @@
 {
   "name": "plunderbot",
-  "version": "0.0.3a",
+  "version": "0.0.5a",
   "description": "A bot for buying low and selling high",
   "main": "index.js",
   "scripts": {
@@ -24,5 +24,8 @@
   "homepage": "https://github.com/ProjectOpenSea/plunderbot#readme",
   "bin":{
     "plunderbot": "bin/plunder.js"
-  }
+  },
+  "dependencies": {
+    "yargs": "12.0.5"
+} 
 }
