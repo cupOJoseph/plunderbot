@@ -1,6 +1,6 @@
 {
   "name": "plunderbot",
-  "version": "0.0.2",
+  "version": "0.0.3a",
   "description": "A bot for buying low and selling high",
   "main": "index.js",
   "scripts": {
