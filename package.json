@@ -26,6 +26,8 @@
     "plunderbot": "bin/plunder.js"
   },
   "dependencies": {
-    "yargs": "12.0.5"
+    "yargs": "12.0.5",
+    "opensea-js":"0.4.0-rc1",
+    "web3":"1.0.0-beta.36"
 } 
 }
