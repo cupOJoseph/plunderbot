@@ -1,6 +1,6 @@
 {
   "name": "plunderbot",
-  "version": "0.0.5a",
+  "version": "0.0.6a",
   "description": "A bot for buying low and selling high",
   "main": "index.js",
   "scripts": {
@@ -28,6 +28,7 @@
   "dependencies": {
     "yargs": "12.0.5",
     "opensea-js":"0.4.0-rc1",
-    "web3":"1.0.0-beta.36"
+    "web3":"1.0.0-beta.36",
+    "truffle-hdwallet-provider":"next"
 } 
 }
