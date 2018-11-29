@@ -5,7 +5,7 @@ const cryptoKittyArbitrage = require("./cryptokitties");
 const axies = require("./axies");
 
 var argv = require('yargs')
-    .usage('Usage: $0 -wallet_mnemonic [string of words with underscores] -wallet_address [ethereum address] -eth_budget [num] -eth_price_threshold [num] increase_percentage [number 0 - 100] -asset_classes [cryptokitties,axie]')
+    .usage('Usage: $0 -wallet_mnemonic [string of words inside quotes] -wallet_address [ethereum address] -eth_budget [num] -eth_price_threshold [num] increase_percentage [number 0 - 100] -asset_classes [cryptokitties,axie]')
     .demandOption(['wallet_mnemonic','wallet_address', 'eth_budget', 'eth_price_threshold', 'increase_percentage', 'asset_classes'])
     .argv;
     

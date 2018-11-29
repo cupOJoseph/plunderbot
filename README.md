@@ -17,6 +17,13 @@ Use `plunderbot` in your terminal or bash window. Try `plunderbot --help` for op
 - asset_classes: Comma-separated list of asset classes (e.g., cryptokitties,mlbcrypto)
 
 
+### Example
+plunderbot
+Usage: plunderbot -wallet_mnemonic [string of words with underscores]
+-wallet_address [ethereum address] -eth_budget [num] -eth_price_threshold [num]
+increase_percentage [number 0 - 100] -asset_classes [cryptokitties,axie]
+
 ## Dependencies
 - Node
 - yargs 12.0.5
+
