@@ -1,0 +1,19 @@
+export declare const tokenSchema: {
+    id: string;
+    properties: {
+        name: {
+            type: string;
+        };
+        symbol: {
+            type: string;
+        };
+        decimals: {
+            type: string;
+        };
+        address: {
+            $ref: string;
+        };
+    };
+    required: string[];
+    type: string;
+};

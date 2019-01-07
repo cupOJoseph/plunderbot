@@ -1,0 +1,22 @@
+export declare const blockParamSchema: {
+    id: string;
+    oneOf: ({
+        type: string;
+        enum?: undefined;
+    } | {
+        enum: string[];
+        type?: undefined;
+    })[];
+};
+export declare const blockRangeSchema: {
+    id: string;
+    properties: {
+        fromBlock: {
+            $ref: string;
+        };
+        toBlock: {
+            $ref: string;
+        };
+    };
+    type: string;
+};

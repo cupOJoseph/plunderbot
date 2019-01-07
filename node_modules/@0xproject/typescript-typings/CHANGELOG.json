@@ -1,0 +1,68 @@
+[
+    {
+        "timestamp": 1527009133,
+        "version": "0.3.2",
+        "changes": [
+            {
+                "note": "Dependencies updated"
+            }
+        ]
+    },
+    {
+        "timestamp": 1525477860,
+        "version": "0.3.1",
+        "changes": [
+            {
+                "note": "Dependencies updated"
+            }
+        ]
+    },
+    {
+        "version": "0.3.0",
+        "changes": [
+            {
+                "note": "Add types for `ethers.js`, removing `ethers-contracts`",
+                "pr": 540
+            }
+        ],
+        "timestamp": 1525428773
+    },
+    {
+        "version": "0.2.0",
+        "changes": [
+            {
+                "note": "Add types for `solc.compileStandardWrapper`",
+                "pr": 509
+            }
+        ],
+        "timestamp": 1524044013
+    },
+    {
+        "version": "0.1.0",
+        "changes": [
+            {
+                "note": "Add types for more packages",
+                "pr": 501
+            },
+            {
+                "note": "Add types for HDKey",
+                "pr": 507
+            }
+        ],
+        "timestamp": 1523462196
+    },
+    {
+        "timestamp": 1522673609,
+        "version": "0.0.3",
+        "changes": [
+            {
+                "note": "Dependencies updated"
+            }
+        ]
+    },
+    {
+        "version": "0.0.2",
+        "changes": [],
+        "timestamp": 1522658513
+    }
+]

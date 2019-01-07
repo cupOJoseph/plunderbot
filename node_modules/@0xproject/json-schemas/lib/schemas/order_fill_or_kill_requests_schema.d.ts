@@ -1,0 +1,16 @@
+export declare const orderFillOrKillRequestsSchema: {
+    id: string;
+    type: string;
+    items: {
+        properties: {
+            signedOrder: {
+                $ref: string;
+            };
+            fillTakerAmount: {
+                $ref: string;
+            };
+        };
+        required: string[];
+        type: string;
+    };
+};

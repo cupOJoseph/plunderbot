@@ -1,0 +1,16 @@
+export declare const orderCancellationRequestsSchema: {
+    id: string;
+    type: string;
+    items: {
+        properties: {
+            order: {
+                $ref: string;
+            };
+            takerTokenCancelAmount: {
+                $ref: string;
+            };
+        };
+        required: string[];
+        type: string;
+    };
+};
