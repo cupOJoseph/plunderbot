@@ -24,7 +24,7 @@ function CryptoKittyArbitrage (argv) {
         console.log("\nresp = " + acct);
     });
 
-    var eth_bal = 0;
+    var eth_bal = 10; //TODO fix this web3 call. 
     //eth_bal = web3.eth.getBalance(web3.eth.accounts[0]);
     console.log("you got ");
     console.log(eth_bal);
@@ -42,13 +42,26 @@ function CryptoKittyArbitrage (argv) {
     networkName: opensea.Network.Main
 }   );
 
-   //TODO:
-   //make sure you have enough ETH in account.
 
    var search = true;
+   var amount_spent == 0;
+
+  //make sure you have enough ETH in account.
+   if(argv.eth_budget >= eth_bal){
+     //The amount you want to spend is more than
+     console.error("Your ETH budget is greater than your balance. Try setting a lower budget.");
+     search = false;
+   }
 
    console.log("Start plundering");
-   while(search && eth_bal > 0.000001){ //go forth and artbitrage while you still have funds
+   /*
+   Requirements to plunder:
+   - There is enough eth in your account to buy things.
+   - The amount spent on buying has not exceeded your budget.
+   - something else has not gone wrong (search == false)
+   */
+
+   while(search && eth_bal > 0.000001 && argv.eth_budget > amount_spent){ //go forth and artbitrage while you still have funds
       search = false; //REMOVE TODO
 
       //check for ones less than argv.eth_price_threshold

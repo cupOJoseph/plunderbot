@@ -10,11 +10,11 @@ npm install plunderbot
 Use `plunderbot` in your terminal or bash window. Try `plunderbot --help` for options.
 
 Example full command:
-`--wallet_mnemonic "frown assist matrix job dog valid space clock broom surface model donate" --wallet_address 0x123abc --eth_budget 0.5 --eth_price_threshold 0.01 --increase_percentage 5 --asset_classes cryptokitties`
+`--wallet_mnemonic "witch collapse practice feed shame open despair creek road again ice least" --wallet_address 0x123abc --eth_budget 0.5 --eth_price_threshold 0.01 --increase_percentage 5 --asset_classes cryptokitties`
 
 
 ### Arguments
-- wallet_mnemonic: The mnemonic for the wallet to use. *Enter seed phrase words surrounded by quotes* Example: `$plunderbot -wallet_mnemonic "witch collapse practice feed shame open despair creek road again ice least" ...`
+- wallet_mnemonic: The mnemonic for the wallet to use. *Enter seed phrase words surrounded by quotes* Example: `$plunderbot -wallet_mnemonic "witch collapse practice feed shame open despair creek road again ice least" ...` You can get one of these by creating ethereum accounts with metamask, myethereumwallet, or some other service. 
 - wallet_address: The address of the wallet to use.
 - eth_budget: The amount of ETH the wallet is allowed to spend.
 - price_increase_percentage: How much higher to relist the items.
