@@ -9,6 +9,8 @@ function CryptoKittyArbitrage (argv) {
     var walletAPIUrl = "https://mainnet.infura.io/v3/8235d0efb49f4a8eaacdb0544078d834";
     var mnemonic = argv.wallet_mnemonic;
     const opensea = require("opensea-js");
+    var hh = require("http-https");
+    var bn = require("bignumber.js");
 
 
     //use mnemonic as provider for web3
@@ -20,14 +22,16 @@ function CryptoKittyArbitrage (argv) {
     //web3 isntance setup complete
     //NOTE: This is use the primary count number of the mnemonic
     const web3 = new Web3(provider);
-    web3.eth.getAccounts().then(acct => {
-        console.log("\nresp = " + acct);
-    });
+    var starting_balance_wei = new bn(-1);
 
-    var eth_bal = 10; //TODO fix this web3 call. 
-    //eth_bal = web3.eth.getBalance(web3.eth.accounts[0]);
-    console.log("you got ");
-    console.log(eth_bal);
+    var eth = web3.eth;
+    eth.getAccounts(function(err, accounts) {
+      console.log(err, accounts);
+      eth.getBalance(accounts[0], function(err, bal){
+        console.log("bal = ", bal);
+        starting_balance_wei = bal;
+      });
+    });
 
 
     //kitty contract at 0xb1690c08e213a35ed9bab7b318de14420fb57d8c.
@@ -44,30 +48,54 @@ function CryptoKittyArbitrage (argv) {
 
 
    var search = true;
-   var amount_spent == 0;
-
+   var amount_spent = 0;
+   var starting_balance_eth = starting_balance_wei.times(1e18);
   //make sure you have enough ETH in account.
-   if(argv.eth_budget >= eth_bal){
+   if(argv.eth_budget >= starting_balance_eth.toNumber()){
      //The amount you want to spend is more than
      console.error("Your ETH budget is greater than your balance. Try setting a lower budget.");
      search = false;
    }
 
    console.log("Start plundering");
-   /*
+   /*===================================================
    Requirements to plunder:
    - There is enough eth in your account to buy things.
    - The amount spent on buying has not exceeded your budget.
-   - something else has not gone wrong (search == false)
-   */
-
+   - something else has not gone wrong (search == false), like web request fails
+   =======================================================*/
    while(search && eth_bal > 0.000001 && argv.eth_budget > amount_spent){ //go forth and artbitrage while you still have funds
       search = false; //REMOVE TODO
 
-      //check for ones less than argv.eth_price_threshold
+      var cheap_kitty_url = "https://api.cryptokitties.co/v2/kitties?offset=0&limit=1&include=sale&parents=false&authenticated=false&orderBy=current_price&orderDirection=asc&total=true";
+      // Identify cheap kitties
+      var req = hh.get(cheap_kitty_url, (resp) => {
+      let data = '';
 
-      //TODO
-      // Identify cheap kitties https://api.cryptokitties.co/v2/kitties?offset=0&limit=12&include=sale&parents=false&authenticated=false&orderBy=current_price&orderDirection=asc&total=true
+      // A chunk of data has been recieved.
+      resp.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      // The whole response has been received. Print out the result.
+      resp.on('end', () => {
+        console.log("got somethin");
+        //Cheapest kitty is:
+        var kitties = JSON.parse(data).kitties;
+        var kitty = kitties[0];
+        //console.log(kitty);
+
+        var wei_price = kitty.auction.current_price;
+        var price = new bn(10e-18);
+
+        console.log("price: ", price);
+      });
+
+    }).on("error", (err) => {
+      console.log("Error: " + err.message);
+    });
+
+      //check for ones less than argv.eth_price_threshold
 
       //TODO buy cheap kitty if it fullfills our criteria (less than amount specified, we have enough in our account)
 
@@ -76,9 +104,9 @@ function CryptoKittyArbitrage (argv) {
         //get the kitty bought.
         //set a new price increase_percentage above buy price.
         //send to opensea for sale.
-   }
+   }//End search
     //TODO how many kitties were bought?
-    console.log("...end plundering.")
+    console.log("... plundering over.")
     provider.engine.stop();
 
 }//END FUNCTION
