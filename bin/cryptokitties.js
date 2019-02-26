@@ -32,6 +32,7 @@ function CryptoKittyArbitrage(argv) {
 
     var search = true;
     var amount_spent = 0;
+    var total_kitties_bought = 0;
     var starting_balance_eth = starting_balance_wei.times(1e18);
     //make sure you have enough ETH in account.
     if (argv.eth_budget > starting_balance_eth.toNumber()) {
@@ -57,22 +58,28 @@ function CryptoKittyArbitrage(argv) {
 
         //make sure this kitty is within our budget and balance TODO
 
-        //TODO buy cheap kitty via web3 call to kitty_address = auction contract
-        //TODO increment how much we have spent and number of bought kitties
+        //buy cheap kitty via web3 call to kitty_address = auction contract
+        var buy_result = helper.buyKitty(web3, cheapest_kitty)
 
-        var sell_price = price + (price * argv.increase_percentage / 100);
-        const expirationTime = (Date.now() / 30000 + 60 * 60 * 24); //sell order is live for 30 days. //TODO allow user to set order time
+        //increment how much we have spent and number of bought kitties
+        if (buy_result == 200) {
+          amount_spent += cheapest_kitty.auction.current_price;
+          total_kitties_bought++;
 
-        //SELL on open sea
-        //We do not use 'await' here because we want to keep plundering.//TODO Async issues
-        const auction = seaport.createSellOrder({
-            kitty.id,
-            kitty_address,
-            argv.wallet_address,
-            sell_price,
-            sell_price,
-            expirationTime
-        })
+          var sell_price = price + (price * argv.increase_percentage / 100);
+          const expirationTime = (Date.now() / 30000 + 60 * 60 * 24); //sell order is live for 30 days. //TODO allow user to set order time
+
+          //SELL on open sea
+          //We do not use 'await' here because we want to keep plundering.//TODO Async issues
+          const auction = seaport.createSellOrder({
+              kitty.id,
+              kitty_address,
+              argv.wallet_address,
+              sell_price,
+              sell_price,
+              expirationTime
+          })
+        }
 
     } //End search
     //TODO how many kitties were bought?
