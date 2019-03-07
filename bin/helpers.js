@@ -84,7 +84,10 @@ function buyKitty(web3, kitty){
     //id is kitty.id;
     //amount is kitty.auction.current_price
 
-    //myContract.methods.myMethod([param1[, param2[, ...]]]).send(options[, callback])
+    //myContract.methods.myMethod([param1[, param2[, ...]]]).send(options[, callback]) //TODO fix method name
+    contract.methods.makebid(kitty.id).send({"value":kitty.auction.current_price}).then(){
+      //TODO was it successful???
+    }
 }
 
 
