@@ -88,5 +88,7 @@ function buyKitty(web3, kitty){
 }
 
 
-
+//export functions for use elsewhere
 module.exports.getCheapKitty = getCheapKitty;
+module.exports.getKitty = getKitty;
+module.exports.checkETHBalance = checkETHBalance;
