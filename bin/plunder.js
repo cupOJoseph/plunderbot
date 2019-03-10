@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-//Add more modules here
+//Add more modules here for other assets
 const kitties = require("./cryptokitties");
 const axies = require("./axies");
 
@@ -41,5 +41,5 @@ if(type.includes("cryptokitties") && type.includes("axies")){
 }else if( type.includes("axies")){
     axies.AxiesArbitrage(argv);
 }else{
-    throw new Error('Type of asset unknown. Try cryptokitties,axies.');
+    throw new Error('Type of asset unknown. Try cryptokitties.');
 }
