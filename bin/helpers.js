@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 //=================== Helper Functions =====================//
 /* Because of the very async nature of working with
 * many APIs from NFT projects mixed with web3 calls
@@ -85,8 +87,9 @@ function buyKitty(web3, kitty){
     //amount is kitty.auction.current_price
 
     //myContract.methods.myMethod([param1[, param2[, ...]]]).send(options[, callback]) //TODO fix method name
-    contract.methods.makebid(kitty.id).send({"value":kitty.auction.current_price}).then(){
-      //TODO was it successful???
+    contract.methods.makebid(kitty.id).send({"value":kitty.auction.current_price}).then(function(result) {
+      console.log("bid result: ", result);
+      // expected output: "Success!"
     }
 }
 
