@@ -1,8 +1,8 @@
 # plunderbot
 An bot that finds arbitrage opportunities on OpenSea and plunders them for profit. Uses OpenSea.js
 
-# Update 8/3/2021: this repo is out-dated, probably no longer secure, and will not help you make any money. please do not use this in production
-Apparently some people have recently shared this project as something that will help you instantly make money flipping on opensea. Do not believe them, trust me, I created this.
+# Update 8/3/2021: this repo is out-dated, does not work, and will not help you make any money. please do not use this in production, it is not secure.
+Apparently some people have recently shared this project as something that will help you instantly make money flipping on opensea. Do not believe them, trust me, I created this. 
 
 ## Installation
 ```
